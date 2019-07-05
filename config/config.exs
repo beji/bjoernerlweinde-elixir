@@ -26,6 +26,10 @@ config :phoenix, :json_library, Jason
 config :phoenix,
   template_engines: [leex: Phoenix.LiveView.Engine]
 
+config :bde, BdeWeb.Endpoint, live_view: [signing_salt: "WyiVE/4S0scpNQxWWm9hicewdNCH4hs+"]
+
+config :bde, Bde.Memoize, default_ttl: 5 * 60
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"

@@ -17,7 +17,9 @@ defmodule BdeWeb.Router do
   scope "/", BdeWeb do
     pipe_through :browser
 
-    get "/", PageController, :index
+    live "/", BlogLive
+    live "/ti", TiLive
+    live "/hiit", HiitLive
   end
 
   # Other scopes may use custom stacks.

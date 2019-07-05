@@ -9,9 +9,10 @@ defmodule Bde.Application do
     # List all child processes to be supervised
     children = [
       # Start the endpoint when the application starts
-      BdeWeb.Endpoint
+      BdeWeb.Endpoint,
       # Starts a worker by calling: Bde.Worker.start_link(arg)
       # {Bde.Worker, arg},
+      Bde.Memoize
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

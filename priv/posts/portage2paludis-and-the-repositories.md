@@ -1,0 +1,4 @@
+::title portage2paludis and the repositories
+::date 2014-08-06T21:05:43.629Z
+::id portage2paludis-and-the-repositories
+So, after running with paludis for a few days I noticed that *cave sync* ran really fast and actually nothing changed in the official gentoo repo. Both seemed weird to me since the rsync on the gentoo repo usually takes a while even if there are only minor updates. I took a closer look and found that it acutally stated that there was no need to sync the repo, in fact it stated that for almost all of the repos but the one I added manually after the switch. The reason is, that [portage2paludis](http://git.exherbo.org/paludis/paludis-scripts.git/plain/portage2paludis.bash) creates repo files for you but it doesn't actually fill in a value for *sync* so cave treads the repo as a local one.
