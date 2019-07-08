@@ -23,23 +23,7 @@ defmodule BdeWeb.TiLive do
          |> Enum.sort()
 
   def render(assigns) do
-    ~L"""
-    <div class="">
-      <form phx-submit="ti-shuffle">
-        <%= for {name, i} <- Enum.with_index(@players) do %>
-        <input type="text", value="<%= name %>", name="player-<%= i %>" placeholder="Name here..." autocomplete="off">
-        <% end %>
-        <button type="submit" >Submit</button>
-      </form>
-      <%= if length(@names_and_races) != 0 do %>
-        <ol>
-          <%= for {name, race} <- @names_and_races do %>
-            <li><b><%= name %></b> spielt heute: <b><%= race %></b></li>
-          <% end %>
-        </li>
-      <% end %>
-    </div>
-    """
+    BdeWeb.PageView.render("ti.html", assigns)
   end
 
   def handle_event("ti-shuffle", formdata, %{assigns: %{races: races}} = socket) do

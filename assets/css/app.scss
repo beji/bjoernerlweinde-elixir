@@ -1,0 +1,164 @@
+/* This file is for your main application css. */
+
+@import "./phoenix.css";
+@import "../../deps/phoenix_live_view/assets/css/live_view.css";
+
+$linkcolor: #db4105;
+$light-grey: #ededed;
+
+@mixin media-query($width, $percentage) {
+  @media screen and (min-width: $width) {
+    .content {
+      margin-left: $percentage;
+    }
+    .sidebar {
+      width: $percentage;
+    }
+  }
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+a {
+  text-decoration: none;
+}
+a,
+a:visited {
+  color: $light-grey;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.content a,
+footer a,
+footer a:visited {
+  color: $linkcolor;
+}
+
+html,
+button,
+input,
+select,
+textarea,
+body {
+  font-family: "Source Sans Pro", "Helvetica", "Arial", sans-serif;
+}
+h1 {
+  font-weight: normal;
+  font-size: 3.2rem;
+  margin: 2.1rem 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  letter-spacing: 0;
+}
+.sidebar {
+  background-color: #222;
+  padding: 1rem;
+  color: $light-grey;
+
+  header {
+    background: inherit;
+    border-bottom: 0;
+    h1,
+    small {
+      text-align: right;
+    }
+    small {
+      display: block;
+    }
+  }
+  nav {
+    background-color: $light-grey;
+    border: 1px solid darken($light-grey, 10%);
+    margin-top: 2rem;
+    h2 {
+      margin: 0.5rem 1rem;
+      text-transform: uppercase;
+      font-size: 1.4rem;
+      font-weight: bold;
+    }
+    h2,
+    ul li a {
+      color: #222;
+    }
+
+    ul {
+      margin-bottom: 0;
+      padding-left: 0;
+      list-style-type: none;
+      li a {
+        display: block;
+        line-height: 2rem;
+        padding-left: 1rem;
+
+        &:hover {
+          background-color: darken($light-grey, 15%);
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
+
+.content {
+  article {
+    border-bottom: 1px solid $light-grey;
+    max-width: 80rem;
+  }
+  pre {
+    max-width: 60%;
+    overflow: visible;
+    &:before {
+      content: "code";
+      text-transform: uppercase;
+      display: block;
+      font-size: 80%;
+    }
+    code {
+      border: 1px solid lighten($linkcolor, 30%);
+    }
+  }
+  .ti-anleitung {
+    margin-top: 1rem;
+  }
+  table.ti-race-pick {
+    td {
+      padding: 0.5rem 0;
+    }
+  }
+}
+
+footer {
+  margin-top: 2rem;
+  text-align: right;
+  font-size: 1.2rem;
+}
+
+@media screen and (min-width: 768px) {
+  .content {
+    margin-left: 35%;
+    padding-left: 1rem;
+  }
+  .sidebar {
+    padding-top: 0;
+    padding-bottom: 0;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 35%;
+  }
+}
+
+@include media-query(1024px, 25%);
+@include media-query(1280px, 20%);

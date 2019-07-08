@@ -1,3 +1,5 @@
+<%= render(BdeWeb.PageView, "_sidebar.html", assigns) %>
+<main role="main" class="container content post">
 <form phx-submit="hiit-start" phx-change="hiit-update">
 <%= for {{_, time, name}, i} <- Enum.with_index(@timers) do %>
   <div class="row">
@@ -16,3 +18,4 @@
 <input class="button" type="submit" value="gogogo">
 <button class="button button-outline" phx-click="add-timer">Add timer</button>
 </form>
+</main>

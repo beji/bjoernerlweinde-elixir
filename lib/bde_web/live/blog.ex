@@ -4,38 +4,11 @@ defmodule BdeWeb.BlogLive do
   @posts_dir Application.app_dir(:bde, "priv/posts")
 
   def render(%{current_post: nil} = assigns) do
-    ~L"""
-    <div class="posts">
-      <%= for post <- @posts do %>
-        <article>
-          <h1>
-            <%= live_link post[:title], to: BdeWeb.Router.Helpers.live_path(@socket, BdeWeb.BlogLive, %{id: post[:id]}) %>
-          </h1>
-          <small><%= post[:date] %></small>
-          <div>
-            <%= Phoenix.HTML.raw(post[:content]) %>
-          </div>
-        </article>
-        <hr />
-      <% end %>
-    </div>
-    """
+    BdeWeb.PageView.render("posts.html", assigns)
   end
 
   def render(assigns) do
-    ~L"""
-    <div class="post">
-        <article>
-          <h1>
-            <%= @current_post[:title] %>
-          </h1>
-          <small><%= @current_post[:date] %></small>
-          <div>
-            <%= Phoenix.HTML.raw(@current_post[:content]) %>
-          </div>
-        </article>
-    </div>
-    """
+    BdeWeb.PageView.render("post.html", assigns)
   end
 
   def mount(_session, socket) do

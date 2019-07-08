@@ -20,6 +20,7 @@ defmodule BdeWeb.Router do
     live "/", BlogLive
     live "/ti", TiLive
     live "/hiit", HiitLive
+    live "/pages", PagesLive
   end
 
   # Other scopes may use custom stacks.

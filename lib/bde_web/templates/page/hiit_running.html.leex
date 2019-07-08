@@ -1,3 +1,5 @@
+<%= render("_sidebar.html", %{}) %>
+<main role="main" class="container content post">
 <%= if @done do %>
   <h1>Done!</h1>
 <% end %>
@@ -30,3 +32,4 @@
 <form phx-submit="hiit-form-running">
   <input type="submit" value="reset" />
 </form>
+</main>

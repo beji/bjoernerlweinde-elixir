@@ -10,10 +10,15 @@ use Mix.Config
 # which you should run after static files are built and
 # before starting your production server.
 config :bde, BdeWeb.Endpoint,
-  http: [:inet6, port: 4000],
-  url: [host: "localhost", port: 4000],
+  http: [:inet6, port: String.to_integer(System.get_env("PORT") || "4000")],
+  url: [
+    host: System.get_env("HTTP_HOST", "localhost"),
+    port: String.to_integer(System.get_env("HTTP_PORT") || "4000")
+  ],
   server: true,
-  cache_static_manifest: "priv/static/cache_manifest.json"
+  cache_static_manifest: "priv/static/cache_manifest.json",
+  root: ".",
+  version: Application.spec(:hiit_live, :vsn)
 
 # Do not print debug messages in production
 config :logger, level: :info

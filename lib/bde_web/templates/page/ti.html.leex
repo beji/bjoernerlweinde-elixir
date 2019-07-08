@@ -1,0 +1,16 @@
+<%= render(BdeWeb.PageView, "_sidebar.html", assigns) %>
+<main role="main" class="container content">
+    <form phx-submit="ti-shuffle">
+    <%= for {name, i} <- Enum.with_index(@players) do %>
+    <input type="text", value="<%= name %>", name="player-<%= i %>" placeholder="Name here..." autocomplete="off">
+    <% end %>
+    <button type="submit" >Submit</button>
+    </form>
+    <%= if length(@names_and_races) != 0 do %>
+    <ol>
+        <%= for {name, race} <- @names_and_races do %>
+        <li><b><%= name %></b> spielt heute: <b><%= race %></b></li>
+        <% end %>
+    </li>
+    <% end %>
+</main>

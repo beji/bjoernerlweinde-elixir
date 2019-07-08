@@ -1,0 +1,6 @@
+<%= render(BdeWeb.PageView, "_sidebar.html", assigns) %>
+<main role="main" class="container content posts">
+    <%= for post <- @posts do %>
+        <%= render("_post.html", %{post: post, link: true, socket: @socket}) %>
+    <% end %>
+</main>
