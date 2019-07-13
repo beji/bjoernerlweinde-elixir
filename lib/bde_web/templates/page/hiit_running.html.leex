@@ -19,7 +19,7 @@
 <h2>Coming up</h2>
 <%= for chunk <- @coming do %>
   <div class="row">
-    <%= for {{time, original, name}, _i} <- chunk do %>
+    <%= for {{time, _original, name}, _i} <- chunk do %>
       <div class="column">
         <div><%= name %></div>
         <div><%= time / 1000 %></div>
