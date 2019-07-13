@@ -3,7 +3,9 @@
     <h1>
         <%= live_link "Bjoernerlwein.de", to: BdeWeb.Router.Helpers.live_path(@socket, BdeWeb.BlogLive, %{}) %>
     </h1>
-    <!--<small class="sub-header">Posts</small>-->
+    <%= if assigns[:subtitle] do %>
+        <small class="sub-header"><%= @subtitle %></small>
+    <% end %>
     </header>
     <nav class="navigation">
     <h2>Pages</h2>

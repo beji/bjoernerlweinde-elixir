@@ -46,7 +46,12 @@ defmodule BdeWeb.TiLive do
 
   def mount(_session, socket) do
     {:ok,
-     assign(socket, races: @races, names_and_races: [], players: 0..7 |> Enum.map(fn _ -> "" end))}
+     assign(socket,
+       races: @races,
+       names_and_races: [],
+       players: 0..7 |> Enum.map(fn _ -> "" end),
+       subtitle: nil
+     )}
   end
 
   defp assign_races_to_players(players, races) do

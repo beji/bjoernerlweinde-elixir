@@ -20,11 +20,11 @@ defmodule BdeWeb.BlogLive do
   def handle_params(%{"id" => id}, _url, socket) do
     post = Bde.Memoize.memoize({BdeWeb.BlogLive, :get_post_by_id}, [id])
 
-    {:noreply, socket |> assign(current_post: post)}
+    {:noreply, socket |> assign(current_post: post, subtitle: post[:title])}
   end
 
   def handle_params(%{}, _url, socket) do
-    {:noreply, socket |> assign(current_post: nil)}
+    {:noreply, socket |> assign(current_post: nil, subtitle: nil)}
   end
 
   def parse_postfile(file) when is_bitstring(file) do
@@ -45,7 +45,7 @@ defmodule BdeWeb.BlogLive do
           Map.put(acc, :date, date)
 
         true ->
-          Map.update(acc, :content, line, fn val -> val <> "\n" <> line end)
+          Map.update(acc, :content, line, fn val -> "#{val} \n #{line}" end)
       end
     end)
     |> Map.update(:content, "", fn content ->
@@ -54,7 +54,7 @@ defmodule BdeWeb.BlogLive do
   end
 
   def get_post_by_id(id) do
-    path = Path.join(@posts_dir, id <> ".md")
+    path = Path.join(@posts_dir, [id, ".md"])
 
     if File.exists?(path) do
       path

@@ -10,7 +10,7 @@ defmodule BdeWeb.PagesLive do
   end
 
   def handle_params(%{"id" => "imprint"}, _url, socket) do
-    {:noreply, socket |> assign(current_page: "imprint")}
+    {:noreply, socket |> assign(current_page: "imprint", subtitle: "Impressum / imprint")}
   end
 
   def handle_params(%{}, _url, socket) do

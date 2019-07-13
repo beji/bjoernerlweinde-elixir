@@ -21,7 +21,8 @@ defmodule BdeWeb.HiitLive do
        timers: [{50, 50, "Burpees"}, {10, 10, "Pause"}, {50, 50, "More Burpees"}],
        lasttick: nil,
        activetimer: 0,
-       done: false
+       done: false,
+       subtitle: nil
      )}
   end
 
