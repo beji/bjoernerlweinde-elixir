@@ -39,8 +39,9 @@ defmodule Bde.MixProject do
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
-      {:phoenix_live_view, github: "phoenixframework/phoenix_live_view"},
-      {:earmark, "~> 1.3"}
+      {:phoenix_live_view, "~> 0.5.2"},
+      {:earmark, "~> 1.3"},
+      {:floki, ">= 0.0.0", only: :test}
     ]
   end
 end

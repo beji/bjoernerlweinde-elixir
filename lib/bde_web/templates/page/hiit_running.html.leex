@@ -1,4 +1,4 @@
-<%= render("_sidebar.html", %{}) %>
+<%= render(BdeWeb.PageView, "_sidebar.html", assigns) %>
 <main role="main" class="container content post">
 <%= if @done do %>
   <h1>Done!</h1>

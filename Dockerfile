@@ -1,4 +1,4 @@
-FROM elixir:1.9.0 as elixir-deps
+FROM elixir:1.9.4 as elixir-deps
 ENV MIX_ENV prod
 
 WORKDIR /var/app
@@ -21,7 +21,7 @@ ADD assets assets
 RUN npm install --prefix ./assets
 RUN NODE_ENV=production npm run deploy --prefix ./assets
 # ===================================
-FROM elixir:1.9.0 as elixir-builder
+FROM elixir:1.9.4 as elixir-builder
 ENV MIX_ENV prod
 ARG PORT
 ARG HTTP_HOST
@@ -42,20 +42,16 @@ RUN mix compile
 RUN mix phx.digest
 RUN mix release
 # ===================================
-FROM debian:stretch
-ENV MIX_ENV prod
+FROM debian:buster
+ENV ELIXIR_VERSION="v1.9.4" \
+    LANG=C.UTF-8 \
+    MIX_ENV=prod
 WORKDIR /var/app
 EXPOSE 4000
 
-RUN apt-get update && apt-get install -y --no-install-recommends openssl locales locales-all \
-    && apt-get clean \
-    && apt-get autoremove -y \
-    && rm -rf /var/lib/apt/lists/*
-
-RUN locale-gen en_US.UTF-8
-ENV LANG en_US.UTF-8
-ENV LANGUAGE en_US:en
-ENV LC_ALL en_US.UTF-8
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends curl ca-certificates libodbc1 libssl1.1 libsctp1 && \
+    apt-get clean && apt-get autoremove -y && rm -rf /var/lib/apt/lists/*
 
 COPY --from=elixir-builder /var/app/_build/prod _build/prod
 COPY --from=elixir-builder /var/app/priv priv
