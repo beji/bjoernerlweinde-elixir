@@ -1,4 +1,4 @@
-<%= render(BdeWeb.PageView, "_sidebar.html", assigns) %>
+<%= live_component @socket, BdeWeb.Components.Sidebar, id: :sidebar, subtitle: @current_post.title %>
 <main role="main" class="container content post">
-    <%= render("_post.html", %{post: @current_post, link: false, socket: @socket}) %>
+    <%= live_component @socket, BdeWeb.Components.Post, post: @current_post, link: false %>
 </main>

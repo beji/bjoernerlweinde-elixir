@@ -44,8 +44,7 @@ defmodule BdeWeb do
       import BdeWeb.Gettext
       alias BdeWeb.Router.Helpers, as: Routes
 
-      import Phoenix.LiveView.Helpers,
-        only: [live_render: 2, live_render: 3, live_link: 1, live_link: 2]
+      import Phoenix.LiveView.Helpers
     end
   end
 

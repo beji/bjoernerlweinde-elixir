@@ -41,7 +41,8 @@ defmodule Bde.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:phoenix_live_view, "~> 0.5.2"},
       {:earmark, "~> 1.3"},
-      {:floki, ">= 0.0.0", only: :test}
+      {:floki, ">= 0.0.0", only: :test},
+      {:credo, "~> 1.1", only: [:dev], runtime: false}
     ]
   end
 end
